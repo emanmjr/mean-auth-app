@@ -34,8 +34,8 @@ router.post('/register', (req, res, next) => {
 router.post('/authenticate', (req, res, next) => {
     const username = req.body.user_name;
     const password = req.body.password;
-
     User.getUserByUsername(username, (err, user) =>{
+        
         if(err) throw err;
         if(!user){
             return res.json({
@@ -43,7 +43,7 @@ router.post('/authenticate', (req, res, next) => {
                 message: 'User not found'
             })
         }
-
+        
         User.comparePassword(password, user.password, (err, isMatch) =>{
             if(err) throw err;
             if(isMatch){

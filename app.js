@@ -15,7 +15,7 @@ mongoose.connection.on('connected', () => {
     console.log('Connected to database ' + config.database);
 });
 
-// On Connection
+// On Connection Error
 mongoose.connection.on('error', (err) => {
     console.log('Database error: ' + err);
 });
